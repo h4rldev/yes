@@ -1,60 +1,31 @@
-use std::{env, process::exit};
+use clap::Parser;
 
-const HELP_TEXT: String = let help_text: String = (r#"
-yes v0.1 - h4rl
-made with rust :)
+#[derive(Parser, Debug)]
+#[clap(about = "A yes reimplementation made in rust :)")]
+#[command(name = "yes-rs")]
+#[command(author = "h4rl")]
+#[command(version = "v0.1")]
+#[command(
+    help_template = "{name} {version}{about-section}Made by: {author-with-newline}\n{usage-heading}\n{usage}\n\n{all-args}{tab}"
+)]
+#[command(about, long_about = None)]
 
-Usage:
-- yes <text> -> prints out <text> on repeat.
-- yes -> prints out y on repeat.
-
-Help:
-- any common way to look at this help text shows this text
-  examples:
-    yes --h,
-    yes --?,
-    yes --help,
-    yes -h,
-    yes -?
-"#).to_string();
-
-
-fn show_help_text() {
-    println!("{}", HELP_TEXT);
-    exit(0);
+struct MyApp {
+    #[clap(
+        help = "Enter optional text to be printed as an extra param :)",
+        required = false
+    )]
+    text: Option<String>,
 }
 
-
 fn main() {
-    let args: Vec<String> = env::args().collect();
-
-    let output = if args.is_empty() {
-        "y".to_string()
-    } else {
-        args[0].to_string()
-    };
-
-
-    match args.contains(String) {
-        "--help".to_string() => {
-            show_help_text();
+    let args = MyApp::parse();
+    match args.text {
+        Some(text) => loop {
+            println!("{}", text);
         },
-        "--?".to_string() => {
-            show_help_text();
+        None => loop {
+            println!("y");
         },
-        "--h".to_string() => {
-            show_help_text();
-        },
-        "-h".to_string() => {
-            show_help_text();
-        },
-        "-?".to_string() => {
-            show_help_text();
-        },
-        _ => {}
     }
-
-    loop (
-        println!("{}", output);
-    )
 }
