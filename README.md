@@ -15,3 +15,4 @@ A simple implementation of the funny cli program known as yes, made in rust due 
 - mental illness
 
 ### licensed under bsd open clause 2?
+[![Image](https://img.shields.io/github/license/h4rldev/yes?style=flat-square)](https://github.com/h4rldev/yes/blob/master/LICENSE)
