@@ -7,6 +7,7 @@ A simple implementation of the funny cli program known as yes, made in rust due 
 - opening a terminal
 - typing yes
 - liking funny things
+- a windows or linux computer (fhak yu macos, solaris and other crap)
 
 ### special thanks:
 - obama
